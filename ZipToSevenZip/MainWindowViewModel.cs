@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace ZipToSevenZip
 {
-    internal class MainWindowViewModel : INotifyPropertyChanged
+    internal class MainWindowViewModel : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -97,5 +97,7 @@ namespace ZipToSevenZip
             var compressor = new SevenZipCompressor();
             compressor.CompressStreamDictionary(dic, sevenZipFilePath);
         }
+
+        public void Dispose() => disposables.Dispose();
     }
 }
